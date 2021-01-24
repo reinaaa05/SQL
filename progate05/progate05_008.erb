@@ -1,0 +1,18 @@
+-- 10個以上購入したユーザーIDとユーザー名、購入した商品の数を取得してください
+select users.id, users.name, COUNT(sales_records.item_id) AS "購入数"
+from sales_records
+join users
+on sales_records.user_id = users.id
+group by users.id
+having COUNT(sales_records.item_id) >= 10;
+
+-- 「サンダル」を購入したユーザーのidと名前を取得してください
+select users.id, users.name
+from sales_records
+join users
+on users.id = sales_records.user_id
+where sales_records.item_id = (
+  select id
+  from items
+  where  name = "サンダル")
+group by users.id , users.name;

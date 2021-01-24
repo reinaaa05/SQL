@@ -1,0 +1,11 @@
+-- 商品ごとに商品のid、売れた個数を取得してください
+select item_id, COUNT(item_id)
+from sales_records
+group by item_id;
+
+-- 売れた数が多い上位5商品のidと個数を取得してください
+select item_id, COUNT(item_id)
+from sales_records
+group by item_id
+order by COUNT(item_id) DESC
+limit 5;

@@ -1,0 +1,14 @@
+-- 売れた数が多い上位5商品のIDと名前、個数を取得してください
+select items.id, items.name, COUNT(sales_records.item_id)
+from items
+join sales_records
+on items.id = sales_records.item_id
+group by item_id,name
+order by COUNT(item_id) DESC
+limit 5;
+
+-- このサイトの総売上と総利益を取得してください
+select SUM(items.price) AS "総売上", SUM(items.price - items.cost) AS "総利益"
+from items
+join sales_records
+on items.id = sales_records.item_id;

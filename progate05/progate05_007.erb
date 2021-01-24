@@ -1,0 +1,13 @@
+-- 日ごとの販売個数とその日付を取得してください
+select purchased_at, COUNT(item_id) AS "販売個数"
+from sales_records
+group by purchased_at
+order by purchased_at ASC;
+
+-- 日ごとの売上額とその日付を取得してください
+select purchased_at, SUM(items.price) AS "売上額"
+from items
+join sales_records
+on items.id = sales_records.item_id
+group by purchased_at
+order by purchased_at ASC;
