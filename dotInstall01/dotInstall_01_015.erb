@@ -1,0 +1,14 @@
+INSERT INTO posts (message, likes) VALUES
+  ('Thank you!', 12),
+  ('thanks 100%', 4),
+  ('Gracias', 4),
+  ('Arigato_gozaimasu', 15),
+  ('Arigato! desu', 23);
+
+-- %: 0文字以上の任意の文字
+-- _: 任意の1文字
+
+SELECT * FROM posts WHERE message LIKE '__a%';
+SELECT * FROM posts WHERE message NOT LIKE '__a%';
+SELECT * FROM posts WHERE message LIKE '%_\%%';
+SELECT * FROM posts WHERE message LIKE '%\_%';
